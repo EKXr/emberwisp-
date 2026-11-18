@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emberwisp — Guard the Last Lantern</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #070818;
+    overflow: hidden;
+  }
+  #game {
+    position: absolute;
+    display: block;
+    cursor: crosshair;
+    image-rendering: auto;
+  }
+  #fallback {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #f2ead8;
+    font: 16px Georgia, serif;
+    text-align: center;
+    display: none;
+  }
+</style>
+</head>
+<body>
+<canvas id="game" width="960" height="600"></canvas>
+<div id="fallback">Emberwisp needs JavaScript and a canvas-capable browser.</div>
+<script type="module" src="./src/main.js"></script>
+<script>
+  // If the module fails to load, say so plainly instead of a black page.
+  window.addEventListener('error', function (e) {
+    if (e.message && String(e.message).indexOf('Failed to fetch') !== -1) {
+      document.getElementById('fallback').style.display = 'block';
+    }
+  }, true);
+</script>
+</body>
+</html>
